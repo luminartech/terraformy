@@ -29,12 +29,12 @@ Not sure how this is going to work, here's the current steps:
 3. `ssh-keygen -f aws_rsa.pub -m 'PEM' -e > aws_rsa_pub.pem`
   * This converts the public key to `PEM`
   
-Turns out we don't need to do step 2! Leaving it here anyway.
+Turns out we don't need to do step 3! Leaving it here anyway.
 
 ### Credentials
 
-1. Create an `AWS`` account if you don't have one
-2. Create an `IAM` role for `terraform` to use. I created one called `terraform` and gave it `programmatic access` and basically full `admin` privileges`. That's bad though.
+1. Create an `AWS` account if you don't have one
+2. Create an `IAM` role for `terraform` to use. I created one called `terraform` and gave it `programmatic access` and basically full `admin` privileges. That's bad though.
 3. Get the `access key` and `secret key` and create a file called `terraform.tfvars` that looks like this, but with your keys filled in:
 
 ```
@@ -42,7 +42,7 @@ access_key = "access key"
 secret_key = "secret key"
 ```
 
-  * Or you could use the `aws-cli` to manage this, `terraform` will check in `~/.aws/credentials`
+  * Or you could use the `aws-cli` to manage this, `terraform` will check in `~/.aws/credentials` for these values as well.
 
 ### terraform
 
@@ -51,7 +51,7 @@ secret_key = "secret key"
 If all is setup correctly `terraform` will write a fair bit to the screen
 describing what it's going to do.
 
-2. `terraform apply` and say 'yes'
+2. `terraform apply` and say `yes`
 
 `terraform` will now create the various `AWS` bits. At the end note the elastic
 IP.
